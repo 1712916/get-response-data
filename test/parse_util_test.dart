@@ -260,9 +260,11 @@ class UserEntity {
   final int age;
 
   factory UserEntity.fromJson(Map json) {
+    final age = json['age'];
     return UserEntity(
       name: json['name'].toString(),
-      age: json['age'].toString().parseInt ?? 0,
+      age: age != null ? age.parseInt : 0,
+      // age: json['age'].toString().parseInt ?? 0,
 
       ///<- not good for memory
       ///age: json['age'].parseInt ?? 0, <- this line throw exception
